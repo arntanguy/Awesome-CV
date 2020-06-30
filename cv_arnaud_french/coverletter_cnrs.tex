@@ -1,0 +1,113 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for Cover Letter
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Authors:
+% Claud D. Park <posquit0.bj@gmail.com>
+% Lars Richter <mail@ayeks.de>
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+\usepackage{hyperref}
+
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+\include{cv/person}
+
+%-------------------------------------------------------------------------------
+%	LETTER INFORMATION
+%	All of the below lines must be filled out
+%-------------------------------------------------------------------------------
+% The company being applied to
+\recipient
+  {CNRS -- Candidature au poste Expert en contrôle-commande (Concours N° 36)}
+  {Affectation: Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier, MONTPELLIER}
+% The date on the letter, default is the date of compilation
+\letterdate{\today}
+% The title of the letter
+\lettertitle{}
+% How the letter is opened
+\letteropening{Madame, Monsieur,}
+% How the letter is closed
+\letterclosing{Veuillez agréér, Madame, Monsieur, l'expression de mes salutations distinguées,}
+% Any enclosures with the letter
+\letterenclosure[Piece-jointe]{Curriculum Vitae}
+
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[R]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Arnaud Tanguy~~~·~~~Cover Letter}
+  {}
+
+% Print the title with above letter informations
+\makelettertitle
+
+%-------------------------------------------------------------------------------
+%	LETTER CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvletter}
+
+  Passioné d'informatique depuis le collège, mes premiers pas en programmation furent auto-didactes. Apres une periode de decouverte variee explorant la diversite de l'ecosysteme informatique, de Windows a Linux, de programmation web au C++, de simples applications a des projets de plus en plus complexes. C'est par le biais du developpement du logiciel de traitement d'images Fotowall\footnote{\url{https://www.enricoros.com/opensource/fotowall/}} durant mes annees de college/lycee, et ce en collaboration avec un developper italien que j'ai reelement fait mes premiers pas dans le monde du developpement logiciel. Cette colloboration m'a permis d'etendre mes competences en programmation, et de decouvrir les rudiment du developpement collaboratif et de ses outils (gestion de version). C'est tout naturellement que mon parcours c'est oriente vers les ecoles d'ingenieur en informatique. Les deux annees de classes preparatoires MPSI m'auront fait entrevoir les possibilites offertes par les mathematiques et la physique, possibilites que les trois ans d'ecole d'ingenieur m'ont offert l'opportunite d'exploiter en pratique, au travers de multiples projets tels le developpement d'un moteur physique\footnote{\url{https://github.com/arntanguy/PHEngine}} et de rendu 3D pour jeux-videos, un programme scientifique de fitting de courbes specialise pour la recherche en microscopie a effet tunnel\footnote{\url{https://github.com/arntanguy/STS-simulator}}. Les stages de derniere annee m'auront fait decouvrir l'etat de l'art en terme de localization et mapping (SLAM) au travers d'un projet de realite augmentee avec Dr. Andrew Comport; ainsi que le deep-learning au travers d'un projet de reconnaissance de lieux par reseaux de neurones convolutionnels (supervise par Dr. Jurgen Sturm).
+
+  C'est arme de ces competences et passion de longue date que mon parcours s'est poursuivi par un doctorat sur le theme du \emph{``SLAM visuel pour la localisation et la commande en boucle fermée de robots humanoïdes"}. Ce projet m'a permis de continuer a developper mes competences en vision par ordinateur, de decouvrir le monde de la robotique et ses problemes, tant complexes que fascinant. Problemes scientifiques et fondamentaux d'une part, necessitant d'autre part de consequents efforts d'ingenierie pour etre menee a bien. Conception, creation et entretien de systemes robotiques, developpement des multiples couches logicielles permettant leur controle, allant du code bas-niveau de ces robots jusqu'a l'implementation haut niveau de l'etat de l'art du domaine, et poussant au-dela par les travaux de recherche. De par sa nature a l'intersection des domaines de vision et robotique, et de par son ambition a rapprocher l'etat de l'art des deux domaines, cette these m'a presente d'uniques defis, tant en terme de recherche que d'ingenierie; sa realisation pratique ne pouvant etre accomplie que par l'implementation rigouseuse des methodes proposees sur des robots humanoides reels. Il est clair que ces travaux n'auraient pu voir le jour sans construire sur les efforts de mes pairs a produire une implementation rigoureuse, performante et flexible de l'etat de l'art, base sur laquelle des travaux novateurs peuvent voire le jour.
+
+  C'est dans l'optique d'appliquer mes competences multiples en ingenierie logicielle, robotique et vision que j'ai poursuivi ma cariere en tant qu'ingenieur de recherche. Une premiere annee au CNRS affecte au LIRMM m'a permis de mettre ces competences au profit de la recherche et des chercheurs du laboratoire, par la poursuite du developpement du framework de controle open-source mc\_rtc\footnote{\url{https://jrl-umi3218.github.io/mc_rtc/}} visant a rendre l'etat de l'art de la robotique humanoide accessible a tous, et a fournir les outils necessaires aux chercheurs pour explorer efficacement de nouvelles methodes. Au dela des multiples accomplissements scientifiques, cette annee fut marque par l'accomplissement de la demonstration finale du projet europeen H2020 COMANOID\footnote{\url{https://comanoid.cnrs.fr/}}, demontrant la capacite d'un robot humanoide a evoluer et realiser des taches de constructions dans le contexte industriel reel de construction aeronautique, une premiere mondiale!
+
+  Toujours dans cette meme optique, j'ai poursuivi mon parcours par un projet de fusion entre les logiciels de controle developpes par l'equipe Humanoid Research Group de l'Advanced Institute of Science and Technology (Tsukuba, Japan) et ceux developpes par le CNRS au LIRMM et au Joint Robotics Laboratory. Ce projet est ne de la realisation que les problematiques complexes actuelles de robotiques ne peuvent etre surmontes que par le biais de collaborations, non seulement scientifiques, mais aussi technique. Cette volontee d'integration est de collaboration ne se limite pas au strict domaine de la robotique humanoide, mais vise a etre suffisement generale pour guarantir la perenite de la recherche en robotique.
+
+  De part mes competences techniques, mon experience passee, tant au LIRMM en interaction avec ses multiples plateformes robotiques (HRP-4, BAZAR, Kukka, robots a cables, etc.), qu'a l'AIST au contact d'HRP-2Kai, HRP5P, Sawyer, Franka (etc.), ainsi que dans les autres laboratoires par lesquels je suis passe (I3S, TUM), je pense pouvoir apporter les competences necessaires pour soutenir la recherche au sein du departement robotique du LIRMM. 
+
+\end{cvletter}
+
+
+%-------------------------------------------------------------------------------
+% Print the signature and enclosures with above letter informations
+\makeletterclosing
+
+\end{document}
