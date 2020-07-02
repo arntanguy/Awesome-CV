@@ -34,7 +34,7 @@
         \item \entrypositionstyle{H2020 COMANOID - Multi-Contact Collaborative Humanoids in Aircraft Manufacturing}\\
           \entrypositionstyle{Site}: \url{https://comanoid.cnrs.fr/}\\
           \entrypositionstyle{Rôle}: \textbf{Responable de l'implémentation et intégration des méthodes de localisation et cartographie} pour la démonstration finale du projet européen COMANOID. Cette demonstration, résultat de 4 ans d'efforts partagés entre quatre instituts de recherche (LIRMM, DLR, L'université de Rome La Sapienza, Inria Rennes et Grenoble) a permis de démontrer l'applicabilité des robots humanoïdes de manufacture dans le cadre industriel réel de la construction aéronautique. Il s'agit essentiellement de capacités de locomotion et manipulation dans un espace contraint~: marche et localisation (SLAM), montée d’escalier (MPC), manipulation (SLAM, registration, asservissement visuel, commande en force, etc.).
-        \item \entrypositionstyle{mc\_rtc}: \url{https://jrl-umi3218.github.io/}\\
+        \item \entrypositionstyle{mc\_rtc}: \url{https://jrl-umi3218.github.io/mc_rtc}\\
         Développement et maintien du framework de contrôle {\tt mc\_rtc} utilisé lors du  démonstrateur ci-dessus, ainsi que par les étudiants et chercheurs du LIRMM, JRL, et leurs partenaires.
         \item Soutien technique aux étudiants et chercheurs IDH et réalisation d'expériences sur les robots HRP-4 et BAZAR.
       \end{cvitems}
@@ -56,6 +56,11 @@
         \item Développement d'une méthode de calibration corps-complet. 
         \item Marche par commande prédictive de modèle (MPC), exploitant une fusion d'informations visuelles (SLAM) et de capteurs proprioceptifs (encoders, capteurs de force) permettant de réagir à des perturbations en générant continuellement une trajectoire de ZMP et les pas futurs assurant la stabilité du robot.
         \item \entrypositionstyle{\emph{DARPA Robotics Challenge (DRC)}}: Participation au sein de l'équipe AIST-NEDO. Classés 10/23 avec l'accomplissement de 6 des 8 tâches (conduite semi-autonome, ouverture de porte et d'une vanne, perçage d'un mur, raccordement d'un cable, traversée d'un terrain accidenté).
+        \item \entrypositionstyle{Contributions logicielles}\\
+          - Méthodes de registration utilisées pendant le DARPA Robotics Challenge: registration de nuages de points 3D (\url{https://github.com/arntanguy/icp}), génération de nuages de points 3D depuis leurs modèles CAO (\url{https://github.com/arntanguy/mesh\_sampling})\\
+          - Filtre de Savitzky-Golay -- \url{https://github.com/arntanguy/gram_savitzky_golay}\\
+          - Calibration corps-complet -- \url{https://github.com/arntanguy/robcalib}\\
+          - Contributions a {\tt mc\_rtc}: observation d'état (SLAM, IMU, vérité terrain VICON,...), tâches de suivi de trajectoire, etc.
       \end{cvitems}
     }
 
@@ -69,7 +74,7 @@
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item \entrypositionstyle{Superviseurs}: Jurgen Sturm et Daniel Cremers
         \item Application de réseaux de neurones convolutionels appliqués a la détection de fermeture de boucle du SLAM.
-        \item Développement de l'architecture permettant l'utilisation de réseaux Siamois dans le framework open-source \emph{Caffe}.
+        \item Développement de l'architecture permettant l'utilisation de réseaux Siamois dans le framework open-source {\tt Caffe}.
       \end{cvitems}
     }
 
