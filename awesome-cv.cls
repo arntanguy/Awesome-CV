@@ -779,6 +779,8 @@
     \printlist{publisher}%
     \setunit*{\addcomma\space}%
     \printfield{year}%
+    \setunit{\addcomma\space}%
+    {\color{red}\textbf{\printfield{note}}}%
     \newunit%
   }
   \par\vspace{0.3\baselineskip}
@@ -798,6 +800,8 @@
     \printfield{year}%
     \setunit{\addcomma\space}%
     \printlist{location}%
+    \setunit{\addcomma\space}%
+    {\color{red}\textbf{\printfield{note}}}%
     \newunit%
   }
   \par\vspace{0.3\baselineskip}
