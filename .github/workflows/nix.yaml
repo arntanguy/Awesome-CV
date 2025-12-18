@@ -1,0 +1,26 @@
+name: Build and Export Nix Artefact
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+
+      - name: Build with Nix
+        run: nix build
+
+      - name: Export result artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-build
+          path: result/
