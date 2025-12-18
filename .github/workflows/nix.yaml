@@ -2,7 +2,7 @@ name: Build and Export Nix Artefact
 
 on:
   push:
-    branches: [main]
+    branches: [topic/arnaud, main]
   pull_request:
 
 jobs:
