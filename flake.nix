@@ -3,7 +3,7 @@
 
   inputs = {
     # Using a more recent nixpkgs is recommended for better LuaLaTeX support
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
