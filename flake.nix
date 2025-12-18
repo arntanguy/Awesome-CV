@@ -58,42 +58,27 @@
             export HOME=$(mktemp -d)
             mkdir -p .cache/texmf-var
 
-            PKGS="`pwd`/pkgs:"
-            echo "pkgs ===="
-            echo $PKGS
-            export TEXINPUTS=$PKGS
-            ls `pwd`
-            echo "pkgs ===="
+            export TEXINPUTS="`pwd`/pkgs:"
+            export TEXMFHOME=.cache
+            export TEXMFVAR=.cache/texmf-var
 
             cd cv_arnaud_french
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              biber cv_arnaud_french || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
+            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
+            biber cv_arnaud_french || true
+            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
 
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              biber coverletter_lirmm_2026 || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
+            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
+            biber coverletter_lirmm_2026 || true
+            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
 
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              biber coverletter_cnrs || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
+            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
+            biber coverletter_cnrs || true
+            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
 
             cd ../cv_arnaud_english
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              biber cv_arnaud_english || true
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
+            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
+            biber cv_arnaud_english || true
+            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
 
             cd ..
           '';
