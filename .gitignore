@@ -16,7 +16,6 @@
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
-<<<<<<< HEAD
 
 ### Editor ###
 ## Vim & Emacs temp files:
@@ -26,4 +25,4 @@
 ### Mac OS X ###
 ## Mac OS X metadata files:
 *.DS_Store
-result/
+result

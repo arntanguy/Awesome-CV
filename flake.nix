@@ -41,43 +41,70 @@
             tikzfill
             parskip
             csquotes
+            roboto
+            fontawesome
           ;
         };
       in
       {
         packages.document = pkgs.stdenvNoCC.mkDerivation rec {
           pname = "latex-demo-document";
-          version = "1.0.1";
+          version = "1.0.5";
           src = ./.;
           buildInputs = [ pkgs.coreutils tex pkgs.biber ];
           # needs a writable place to initialize font caches.
           buildPhase = ''
-                set -e
-                export HOME=$(mktemp -d)
-                mkdir -p .cache/texmf-var
+            set -e
+            export HOME=$(mktemp -d)
+            mkdir -p .cache/texmf-var
 
-                cd cv_arnaud_french
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                  xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                  biber cv_arnaud_french || true
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                  xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
+            PKGS="`pwd`/pkgs:"
+            echo "pkgs ===="
+            echo $PKGS
+            export TEXINPUTS=$PKGS
+            ls `pwd`
+            echo "pkgs ===="
 
-                ls -al
+            cd cv_arnaud_french
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              biber cv_arnaud_french || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
 
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                  biber coverletter_lirmm_2026 || true
-                env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              biber coverletter_lirmm_2026 || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
+
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              biber coverletter_cnrs || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
+
+            cd ../cv_arnaud_english
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              biber cv_arnaud_english || true
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
+
+            cd ..
           '';
 
           installPhase = ''
-            mkdir -p $out
-            cp cv_arnaud_french.pdf $out/
-            cp coverletter_lirmm_2026.pdf $out/
+            mkdir -p $out/french
+            mkdir -p $out/english
+            cp cv_arnaud_french/cv_arnaud_french.pdf $out/french/CV_Arnaud_Tanguy_French.pdf
+            cp cv_arnaud_french/coverletter_lirmm_2026.pdf $out/french/
+            cp cv_arnaud_french/coverletter_cnrs.pdf $out/french/
+            cp cv_arnaud_english/cv_arnaud_english.pdf $out/english/CV_Arnaud_Tanguy_English.pdf
           '';
         };
 
