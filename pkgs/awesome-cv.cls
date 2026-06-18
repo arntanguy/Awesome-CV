@@ -778,7 +778,7 @@
     \setunit*{\addcomma\space}%
     \printfield{year}%
     \setunit{\addcomma\space}%
-    {\color{red}\textbf{\printfield{note}}}%
+    {\emph{\printfield{note}}}%
     \newunit%
   }
   \par\vspace{0.3\baselineskip}
@@ -799,7 +799,7 @@
     \setunit{\addcomma\space}%
     \printlist{location}%
     \setunit{\addcomma\space}%
-    {\color{red}\textbf{\printfield{note}}}%
+    {\emph{\printfield{note}}}%
     \newunit%
   }
   \par\vspace{0.3\baselineskip}
