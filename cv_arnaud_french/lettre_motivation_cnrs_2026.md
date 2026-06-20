@@ -5,6 +5,7 @@ Actuellement Ingénieur de Recherche (BIATSS) à l’Université de Montpellier 
 Mon parcours repose sur une double compétence : la maîtrise approfondie du développement logiciel (notamment C++, Python, ROS) et une expertise de terrain dans la mise en œuvre d'expérimentations complexes. J’ai déployé des robots humanoïdes lors de démonstrations internationales exigeantes, garantissant leur fiabilité opérationnelle en environnements contraints. Mon objectif au LIRMM est de pérenniser le patrimoine logiciel du laboratoire, maintenir son parc robotique hétérogène, structurer l’environnement expérimental et former les chercheurs aux meilleures pratiques de l’ingénierie.
 
 1. Une vocation ancrée dans l'ingénierie logicielle
+
 Ma vocation est née d'une curiosité précoce pour l'informatique. Dès l'école primaire, la découverte d'un ancien Macintosh a éveillé en moi le besoin de comprendre l'architecture interne des machines et l'exécution des systèmes. 
 
 Au collège, j'ai appris le C++ en autodidacte via les tutoriels du « Site du Zéro ». Les limites matérielles de ma machine de l'époque (256 Mo de RAM, 4 Go de disque dur) m'ont rapidement mené vers l'écosystème Linux (Ubuntu 8.04). Résoudre des problèmes d'installation de composants réseau m'a fait découvrir l'univers de la ligne de commande (Bash), la compilation de pilotes pour le noyau Linux et le contrôle profond qu'offre l'open-source. Après avoir exploré la programmation web (PHP/HTML/CSS), Python et le développement 2D avec la bibliothèque SFML, j'ai co-développé au lycée le logiciel de manipulation d'images *Fotowall*. 
@@ -12,6 +13,7 @@ Au collège, j'ai appris le C++ en autodidacte via les tutoriels du « Site du Z
 Hébergé sur GitHub dès les débuts de la plateforme et co-conçu avec Enrico Ros (développeur C++ expérimenté), ce projet — toujours maintenu — a dépassé le million de téléchargements en 2017. Il m'a appris les principes du développement collaboratif (Git), l'API C++ Qt et les défis de maintenance à long terme. Ce socle technique m'a permis d'aborder mes études à Polytech Nice Sophia puis mes travaux de recherche avec une agilité logicielle déjà confirmée.
 
 2. Une expertise éprouvée par les grands défis internationaux
+
 Mon expérience s’est forgée sur des projets mondiaux, m’habituant à gérer des systèmes complexes sous forte pression opérationnelle.
 
 En doctorat, j’ai intégré l’équipe franco-japonaise AIST-NEDO pour le DARPA Robotics Challenge (DRC), fruit d'une collaboration entre le JRL et le groupe HRG de l’AIST. Confronté à la réalité du terrain (faire conduire une voiture et franchir des obstacles à un humanoïde), j’y ai développé des modules de traitement 3D (ICP, recalage de nuages de points) et compris qu'un code isolé ne suffit pas si l’intégration système globale manque de robustesse. J'ai prolongé cette dynamique sur le projet européen H2020 COMANOID, comme responsable de la chaîne de localisation SLAM pour le démonstrateur final chez Airbus à Saint-Nazaire. Pour le défi de la montée d’escaliers, exigeant une précision centimétrique pour éviter les collisions, j'ai assuré l’intégration complète entre la localisation et le planificateur de marche développé par S. Caron au LIRMM.
@@ -25,6 +27,7 @@ En autonomie, j’ai également assuré seul la mise en œuvre technique d’une
 Au JRL (Japon), j'ai piloté une transition technologique majeure : l'abandon du framework historique HMC au profit de mc_rtc, initié par P. Gergondet. Validé par la direction, ce choix a rationalisé les développements et facilité l'accueil des étudiants grâce à une documentation rigoureuse. Cette transition a propulsé mc_rtc, qui supporte aujourd'hui des dizaines de robots (humanoïdes, bras, quadrupèdes) dans des laboratoires internationaux (JRL, LIRMM, EPFL, TUM) et sert de pilier à des projets d'envergure (H2020 I.AM) et des collaborations industrielles (loco-manipulation de bobines, déchargement de pneus avec Michelin).
 
 3. Adéquation avec les besoins du LIRMM : maintenance et intégration
+
 Ma candidature s'inscrit en cohérence directe avec les besoins du département de robotique du LIRMM. Mon poste actuel de BIATSS m'a permis de prendre la responsabilité logicielle et matérielle de plateformes clés : les humanoïdes HRP-4, RHPS1, Unitree G1, et les bras Franka Emika Panda ou Universal Robots. Mon action s'articule autour de quatre axes :
 
 *   **Maintenance matérielle et logicielle :** J'interviens sur le hardware (re-taraudage, soudures, réparations sur HRP-4) pour prolonger leur cycle de vie, tout en modernisant les couches logicielles via Docker/Devcontainers et Nix pour garantir une reproductibilité absolue.
@@ -39,6 +42,7 @@ Mon expertise est transverse aux besoins des différentes équipes du départeme
 *   **IDH (interaction homme-robot) :** Mon équipe d'ancrage historique, de laquelle mon parcours est indissociable.
 
 4. Vision d'avenir et engagement pour la communauté
+
 Mon projet au CNRS est de bâtir un socle technique commun pour la robotique française afin d'éviter la duplication des efforts entre laboratoires. La science ouverte doit s'appuyer sur une infrastructure logicielle pérenne garantissant la reproductibilité stricte des publications.
 
 J'ai initié plusieurs chantiers dans cette direction :
