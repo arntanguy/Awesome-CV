@@ -6,11 +6,9 @@ Mon parcours repose sur une double compétence : la maîtrise approfondie du dé
 
 1. Une vocation ancrée dans l'ingénierie logicielle
 
-Ma vocation est née d'une curiosité précoce pour l'informatique. Dès l'école primaire, la découverte d'un ancien Macintosh a éveillé en moi le besoin de comprendre l'architecture interne des machines et l'exécution des systèmes. 
+Ma trajectoire d'ingénieur s'est forgée très tôt autour d'une culture open-source et de la maîtrise des systèmes complexes. Initié de manière autodidacte à la programmation C++ et à l'écosystème Linux, j'ai rapidement développé une expertise en ligne de commande (Bash), en compilation de pilotes pour le noyau et en optimisation logicielle sous contraintes matérielles.
 
-Au collège, j'ai appris le C++ en autodidacte via les tutoriels du « Site du Zéro ». Les limites matérielles de ma machine de l'époque (256 Mo de RAM, 4 Go de disque dur) m'ont rapidement mené vers l'écosystème Linux (Ubuntu 8.04). Résoudre des problèmes d'installation de composants réseau m'a fait découvrir l'univers de la ligne de commande (Bash), la compilation de pilotes pour le noyau Linux et le contrôle profond qu'offre l'open-source. Après avoir exploré la programmation web (PHP/HTML/CSS), Python et le développement 2D avec la bibliothèque SFML, j'ai co-développé au lycée le logiciel de manipulation d'images *Fotowall*. 
-
-Hébergé sur GitHub dès les débuts de la plateforme et co-conçu avec Enrico Ros (développeur C++ expérimenté), ce projet — toujours maintenu — a dépassé le million de téléchargements en 2017. Il m'a appris les principes du développement collaboratif (Git), l'API C++ Qt et les défis de maintenance à long terme. Ce socle technique m'a permis d'aborder mes études à Polytech Nice Sophia puis mes travaux de recherche avec une agilité logicielle déjà confirmée.
+Cette agilité technique s'est concrétisée dès le lycée par le co-développement de Fotowall, un logiciel de manipulation d'images basé sur l'API C++ Qt. Hébergé sur GitHub dès les débuts de la plateforme et co-conçu avec un développeur senior, ce projet — toujours maintenu — a dépassé le million de téléchargements en 2017. Cette expérience précoce m'a confronté aux réalités du développement collaboratif (Git) et aux défis de la maintenance logicielle à long terme. Ce socle technique m'a permis d'aborder mon cursus à Polytech Nice Sophia, puis mes dix années d'ingénierie en laboratoire de recherche, avec une maturité logicielle déjà confirmée.
 
 2. Une expertise éprouvée par les grands défis internationaux
 
