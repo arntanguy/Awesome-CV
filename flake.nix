@@ -158,10 +158,16 @@
 
         # Local development environment (`nix develop`)
         devShells.default = pkgs.mkShell {
-          buildInputs = [ tex pkgs.biber compile-doc ];
+          buildInputs = [
+            tex
+            pkgs.biber
+            compile-doc # helper to build the latex documents
+            pkgs.zathura # minimal pdf reader
+          ];
           shellHook = ''
             echo "Build with compile-doc:"
             ${compile-doc}/bin/compile-doc
+            echo "Display result with: zathura cv_arnaud_french/build/cv_arnaud_french_detailed.pdf"
           '';
         };
       });
