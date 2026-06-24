@@ -45,11 +45,10 @@
             fontawesome
           ;
         };
-      in
-      {
-        packages.document = pkgs.stdenvNoCC.mkDerivation rec {
-          pname = "latex-demo-document";
-          version = "1.0.5";
+        mkDocument = {folder, latexFileName}: 
+          pkgs.stdenvNoCC.mkDerivation {
+          pname = "${latexFileName}";
+          version = "1.0.0";
           src = ./.;
           buildInputs = [ pkgs.coreutils tex pkgs.biber ];
           # needs a writable place to initialize font caches.
@@ -62,38 +61,36 @@
             export TEXMFHOME=.cache
             export TEXMFVAR=.cache/texmf-var
 
-            cd cv_arnaud_french
-            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-            biber cv_arnaud_french || true
-            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-
-            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-            biber coverletter_lirmm_2026 || true
-            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-
-            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
-            biber coverletter_cnrs || true
-            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
-
-            cd ../cv_arnaud_english
-            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
-            biber cv_arnaud_english || true
-            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
-
-            cd ..
+            cd ${folder}
+            xelatex -interaction=nonstopmode ${latexFileName}.tex || true
+            biber ${latexFileName} || true
+            xelatex -interaction=nonstopmode ${latexFileName}.tex || true
           '';
 
           installPhase = ''
-            mkdir -p $out/french
-            mkdir -p $out/english
-            cp cv_arnaud_french/cv_arnaud_french.pdf $out/french/CV_Arnaud_Tanguy_French.pdf
-            cp cv_arnaud_french/coverletter_lirmm_2026.pdf $out/french/
-            cp cv_arnaud_french/coverletter_cnrs.pdf $out/french/
-            cp cv_arnaud_english/cv_arnaud_english.pdf $out/english/CV_Arnaud_Tanguy_English.pdf
+            mkdir -p $out/${folder}
+            cp ${latexFileName}.pdf $out/${folder}/${latexFileName}.pdf
           '';
         };
+        docs = {
+          french_cv_detailed = mkDocument { folder = "cv_arnaud_french"; latexFileName = "cv_arnaud_french_detailed"; };
+          french_cv_short = mkDocument { folder = "cv_arnaud_french"; latexFileName = "cv_arnaud_french_short"; };
+          french_motivation_lirmm_2026 = mkDocument { folder = "cv_arnaud_french"; latexFileName = "coverletter_lirmm_2026"; };
+          french_coverletter_cnrs_2020 = mkDocument { folder = "cv_arnaud_french"; latexFileName = "coverletter_cnrs_concours_2020"; };
+          english_cv_outdated = mkDocument { folder = "cv_arnaud_english"; latexFileName = "cv_arnaud_english"; };
+        };
+      in
+      {
+          # Merge the documents into your final packages output
+          packages = docs // {
+            # Collect all values from the 'docs' set automatically
+            all_documents = pkgs.symlinkJoin {
+              name = "all-documents"; # symlinkJoin usually expects a name attribute
+              paths = builtins.attrValues docs;
+            };
+          };
 
-        defaultPackage = self.packages.${system}.document;
+        defaultPackage = self.packages.${system}.all_documents;
 
         # Optional: Add a devShell so you can run 'nix develop' to test locally
         devShells.default = pkgs.mkShell {
