@@ -13,7 +13,6 @@
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 %
 
-
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
@@ -47,11 +46,9 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
-
 \include{cv/person}
 
 \addbibresource{../citations.bib}
-
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -63,21 +60,19 @@
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
-  {Arnaud TANGUY~~~·~~~Curriculum Vitae}
-  {\thepage}
-
+{\today}
+{Arnaud TANGUY~~~·~~~Curriculum Vitae}
+{\thepage}
 
 %-------------------------------------------------------------------------------
-%	CV/RESUME CONTENT
-%	Each section is imported separately, open each file in turn to modify content
+%  CV/RESUME CONTENT
+%  Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
 \input{cv/experience.tex}
 \input{cv/education.tex}
 \input{../publications.tex}
 \input{cv/extracurricular.tex}
 % \input{cv/presentation.tex}
-
 
 %-------------------------------------------------------------------------------
 \end{document}
