@@ -50,6 +50,43 @@
             unicode-math environ tikzfill parskip csquotes roboto fontawesome;
         };
 
+        compile-doc = pkgs.writeShellScriptBin "compile-doc" ''
+          if [ -z "$1" ] || [ -z "$2" ]; then
+            echo "Usage: compile-doc <folder> <latexFileName>"
+            echo "Example: compile-doc cv_arnaud_french cv_arnaud_french_detailed"
+            exit 1
+          fi
+
+          FOLDER="$1"
+          FILE_NAME="$2"
+          BUILD_DIR="build"
+
+          export HOME=$(mktemp -d)
+          mkdir -p .cache/texmf-var
+
+          export TEXINPUTS="$(pwd)/pkgs:"
+          export TEXMFHOME=.cache
+          export TEXMFVAR=.cache/texmf-var
+
+          # 1. Jump into the target folder and create the build directory
+          cd "$FOLDER"
+          mkdir -p "$BUILD_DIR"
+
+          # 2. Compile Pass 1 (directing outputs to the build folder)
+          echo "--- Running xelatex (Pass 1) ---"
+          ${tex}/bin/xelatex -interaction=nonstopmode -output-directory="$BUILD_DIR" "$FILE_NAME".tex || true
+
+          # 3. Process bibliography (biber needs to find files inside the build directory)
+          echo "--- Running biber ---"
+          ${pkgs.biber}/bin/biber --output-directory="$BUILD_DIR" "$BUILD_DIR/$FILE_NAME" || true
+
+          # 4. Compile Pass 2
+          echo "--- Running xelatex (Pass 2) ---"
+          ${tex}/bin/xelatex -interaction=nonstopmode -output-directory="$BUILD_DIR" "$FILE_NAME".tex || true
+
+          echo "Done! Generated $FOLDER/$BUILD_DIR/$FILE_NAME.pdf"
+        '';
+
         mkDocument = { folder, latexFileName, }:
           pkgs.stdenvNoCC.mkDerivation {
             pname = latexFileName;
@@ -58,23 +95,26 @@
             buildInputs = [ pkgs.coreutils tex pkgs.biber ];
 
             buildPhase = ''
-              set -e
-              export HOME=$(mktemp -d)
-              mkdir -p .cache/texmf-var
-
-              export TEXINPUTS="`pwd`/pkgs:"
-              export TEXMFHOME=.cache
-              export TEXMFVAR=.cache/texmf-var
-
-              cd ${folder}
-              xelatex -interaction=nonstopmode ${latexFileName}.tex || true
-              biber ${latexFileName} || true
-              xelatex -interaction=nonstopmode ${latexFileName}.tex || true
+              ${compile-doc}/bin/compile-doc "${folder}" "${latexFileName}"
             '';
+            #   ''
+            #   set -e
+            #   export HOME=$(mktemp -d)
+            #   mkdir -p .cache/texmf-var
+            #
+            #   export TEXINPUTS="`pwd`/pkgs:"
+            #   export TEXMFHOME=.cache
+            #   export TEXMFVAR=.cache/texmf-var
+            #
+            #   cd ${folder}
+            #   xelatex -interaction=nonstopmode ${latexFileName}.tex || true
+            #   biber ${latexFileName} || true
+            #   xelatex -interaction=nonstopmode ${latexFileName}.tex || true
+            # '';
 
             installPhase = ''
               mkdir -p $out/${folder}
-              cp ${latexFileName}.pdf $out/${folder}/${latexFileName}.pdf
+              cp ${folder}/build/${latexFileName}.pdf $out/${folder}/${latexFileName}.pdf
             '';
           };
 
@@ -117,6 +157,12 @@
         checks = { formatting = treefmtEval.config.build.check self; };
 
         # Local development environment (`nix develop`)
-        devShells.default = pkgs.mkShell { buildInputs = [ tex pkgs.biber ]; };
+        devShells.default = pkgs.mkShell {
+          buildInputs = [ tex pkgs.biber compile-doc ];
+          shellHook = ''
+            echo "Build with compile-doc:"
+            ${compile-doc}/bin/compile-doc
+          '';
+        };
       });
 }
