@@ -3,7 +3,7 @@
 
   inputs = {
     # FIXME upgrading breaks awesome-cv formatting
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,8 +11,16 @@
     # tex-fmt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils, treefmt-nix, tex-fmt, }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      treefmt-nix,
+      tex-fmt,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
@@ -30,10 +38,18 @@
           # Use the package straight from the tex-fmt input flake!
           settings.formatter.tex-fmt = {
             command = "${tex-fmt.packages.${system}.default}/bin/tex-fmt";
-            includes = [ "*.tex" "*.bib" ];
+            includes = [
+              "*.tex"
+              "*.bib"
+            ];
             # Add your custom formatting arguments here
             # Correct options for tex-fmt
-            options = [ "--tabsize" "2" "--wraplen" "120" ];
+            options = [
+              "--tabsize"
+              "2"
+              "--wraplen"
+              "120"
+            ];
           };
           programs = {
             mdformat.enable = true;
@@ -44,10 +60,45 @@
         # Combine TeX packages
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive)
-            scheme-basic latexmk luaotfload latex-bin ragged2e babel
-            babel-french biblatex geometry fontspec xetex xecjk xunicode xstring
-            xcolor enumitem xifthen ifmtarg setspace tcolorbox sourcesanspro
-            unicode-math environ tikzfill parskip csquotes roboto fontawesome;
+            scheme-basic
+            latexmk
+            luaotfload
+            latex-bin
+            ragged2e
+            babel
+            babel-french
+            hyphen-french
+            biblatex
+            geometry
+            fontspec
+            xetex
+            xecjk
+            xunicode
+            xstring
+            xcolor
+            enumitem
+            xifthen
+            ifmtarg
+            setspace
+            tcolorbox
+            sourcesanspro
+            unicode-math
+            environ
+            tikzfill
+            parskip
+            csquotes
+            roboto
+            fontawesome6
+            accsupp
+            ;
+        };
+
+        # CREATE A REPRODUCIBLE FONTCONFIG LINKING SOURCE-SANS
+        fontsConf = pkgs.makeFontsConf {
+          fontDirectories = [
+            pkgs.source-sans
+            pkgs.roboto
+          ];
         };
 
         compile-doc = pkgs.writeShellScriptBin "compile-doc" ''
@@ -63,6 +114,11 @@
 
           export HOME=$(mktemp -d)
           mkdir -p .cache/texmf-var
+
+          # ENSURE THE COMPILER USES THE HERMETIC FONT CONFIGURATION
+          if [ -z "$FONTCONFIG_FILE" ]; then
+            export FONTCONFIG_FILE="${fontsConf}"
+          fi
 
           export TEXINPUTS="$(pwd)/pkgs:"
           export TEXMFHOME=.cache
@@ -87,30 +143,24 @@
           echo "Done! Generated $FOLDER/$BUILD_DIR/$FILE_NAME.pdf"
         '';
 
-        mkDocument = { folder, latexFileName, }:
+        mkDocument =
+          { folder, latexFileName }:
           pkgs.stdenvNoCC.mkDerivation {
             pname = latexFileName;
             version = "1.0.0";
             src = ./.;
-            buildInputs = [ pkgs.coreutils tex pkgs.biber ];
+            buildInputs = [
+              pkgs.coreutils
+              tex
+              pkgs.biber
+            ];
+
+            # EXPOSE THE FONT PATH TO THE ISOLATED DERIVATION BUILDER
+            FONTCONFIG_FILE = fontsConf;
 
             buildPhase = ''
               ${compile-doc}/bin/compile-doc "${folder}" "${latexFileName}"
             '';
-            #   ''
-            #   set -e
-            #   export HOME=$(mktemp -d)
-            #   mkdir -p .cache/texmf-var
-            #
-            #   export TEXINPUTS="`pwd`/pkgs:"
-            #   export TEXMFHOME=.cache
-            #   export TEXMFVAR=.cache/texmf-var
-            #
-            #   cd ${folder}
-            #   xelatex -interaction=nonstopmode ${latexFileName}.tex || true
-            #   biber ${latexFileName} || true
-            #   xelatex -interaction=nonstopmode ${latexFileName}.tex || true
-            # '';
 
             installPhase = ''
               mkdir -p $out/${folder}
@@ -140,7 +190,8 @@
             latexFileName = "cv_arnaud_english";
           };
         };
-      in {
+      in
+      {
         # Define output packages
         packages = docs // {
           all_documents = pkgs.symlinkJoin {
@@ -154,7 +205,9 @@
         formatter = treefmtEval.config.build.wrapper;
 
         # Adds a syntax formatting validation test automatically on `nix flake check`
-        checks = { formatting = treefmtEval.config.build.check self; };
+        checks = {
+          formatting = treefmtEval.config.build.check self;
+        };
 
         # Local development environment (`nix develop`)
         devShells.default = pkgs.mkShell {
@@ -165,10 +218,12 @@
             pkgs.zathura # minimal pdf reader
           ];
           shellHook = ''
+            export FONTCONFIG_FILE="${fontsConf}"
             echo "Build with compile-doc:"
             ${compile-doc}/bin/compile-doc
             echo "Display result with: zathura cv_arnaud_french/build/cv_arnaud_french_detailed.pdf"
           '';
         };
-      });
+      }
+    );
 }

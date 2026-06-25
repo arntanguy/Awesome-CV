@@ -18,10 +18,6 @@
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
-
-% Specify the location of the included fonts
-% \fontdir[../pkgs/fonts/]
-
 \usepackage[french]{babel}
 
 % Configure page margins with geometry
@@ -47,9 +43,7 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
-\include{person}
-
-\addbibresource{../citations.bib}
+\input{person}
 
 %-------------------------------------------------------------------------------
 \begin{document}
