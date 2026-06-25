@@ -9,47 +9,46 @@
 \begin{cventries}
   %---------------------------------------------------------
   \cventry
-  {Université de Montpellier -- Service d'appui à la recherche du LIRMM} % Organization
+  {Service d'appui à la recherche - Laboratoire d'Informatique et de Robotique de l'Université de
+  Montpellier} % Organization
   {Ingénieur de Recherche (CDD -- BIATSS)} % Job title
   {Montpellier, France} % Location
   {Fév. 2024 -- Aujourd'hui} % Date(s)
   {
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Mainteneur principal suite au départ de
-      \entrypositionstyle{P. Gergondet}, son concepteur historique. L'écosystème
-      gravite autour d'un framework central fournissant une architecture modulaire de contrôle temps-réel
-      (\keyword{C++}, \keyword{Python}) basé sur l'optimisation corps complet (\keyword{QP}) et des outils de
-      visualisation, de logging et de machines à états finis. Le projet a pris une ampleur
-      considérable (dizaines de robots et simulateurs, centaines de controleurs et plugins), dont le maintien
-      repose sur un suivi \keyword{DevOps} crucial que j'assure : intégration continue, infrastructure
-      de compilation, tests unitaires, packaging, déploiement, mise à jour (ex: transition ROS1 vers \keyword{ROS2}).
-    \item \entrypositionstyle{Plateformes Robotiques (Hardware \& Logiciel)} : Responsable technique d'une
-      partie du parc du LIRMM, en particulier de tous les robots humanoïdes (\keyword{HRP-4, RHPS1, Unitree G1,
-      Pepper, NAO}) et des bras manipulateurs (\keyword{Panda, UR5}). Effectue l'entretien régulier et
-      l'ingénierie mécanique de précision (démontage, graissage des harmonic drives, remplacement de
-      moteurs, re-taraudage, remplacement de câbles électroniques) ainsi que l'intégration de capteurs
-      (conception CAO et impression 3D, connexions électriques, intégration logicielle). Assure le maintien
-      logiciel de ces systèmes complexes pour garantir leur disponibilité immédiate lors des expérimentations.
-    \item \entrypositionstyle{Encadrement technique \& Fiabilisation} : Accompagnement de doctorants pour la
+    \item \entrypositionstyle{Développement Logiciel} : \\
+      -- Mainteneur principal de l'écosystème de contrôle robotique temps-réel \keyword{mc\_rtc} permettant
+      le contrôle de plusieurs dizaines de robots (humanoïdes, manipulateurs, etc) et activement utilisé dans
+      plusieurs laboratoires (\keyword{LIRMM, JRL, EPFL, TUM}, ...) et pour des projets européens d'envergure
+      (\keyword{H2020 COMANOID}, \keyword{I.AM}, etc).\\
+      -- Co-conception avec le LAAS d'une architecture moderne de développement et de déploiement
+      reproductible (\keyword{Nix}).
+    \item \entrypositionstyle{Plateformes} : \\
+      -- Responsable des robots humanoïdes (\keyword{HRP-4, RHPS1, Unitree G1, Pepper, NAO}) et des bras
+      manipulateurs (\keyword{Panda, UR5}). \\
+      -- Effectue l'entretien mécanique et électronique régulier. \\
+      -- Effectue des réparations mécaniques et électroniques simples: remplacement de pièces (e.g moteur),
+      remplacement de câbles électroniques défectueux, etc. \\
+      -- Assure le maintien logiciel de ces systèmes complexes pour garantir leur disponibilité immédiate
+      lors des expérimentations.
+    \item \entrypositionstyle{Encadrement} : Accompagnement de doctorants pour la
       mise en œuvre de démonstrateurs expérimentaux :\\
-      \emph{-- Assistance sit-to-stand} : Mise en place et sécurisation de ce démonstrateur à haut risque:
-      contrôle temps-réel de la pression appliquée par le robot \keyword{HRP-4} sur le torse d'un humain pour
-      apporter la force manquante à son mouvement. J'ai sécurisé l'expérimentation par une phase initiale de
-      test remplaçant l'humain par un robot Panda afin de valider l'intégration complète (motion tracking
-      X-Sens et suivi du mouvement par le robot, qualité de la stabilisation et de l'application des forces). \\
-      \emph{-- Évaluation HCERES du laboratoire} : Valorisation de travaux de thèse sur la stabilité
-      dynamique corps complet d'un robot humanoïde, que j'ai fortement soutenus par une assistance
-      technique à l'implémentation (tâches et contraintes QP) et à la mise en place du démonstrateur. Suite à
-      une défaillance mécanique de \keyword{HRP-4}, j'ai effectué son portage au robot \keyword{RHPS1} (intégrant
-      au passage des capteurs de force).
-    \item \entrypositionstyle{Pérennisation \& Valorisation} : Travail actif avec les ingénieurs du
-      laboratoire à l'unification des développements logiciels inter-équipes et inter-laboratoires.
-      Co-conception avec le LAAS d'une architecture moderne de développement et de déploiement basée sur
-      \keyword{Nix}, présentée lors d'événements nationaux (\emph{Tech Days 2RM}) ; présentation de
-      l'intégration entre mc\_rtc et l'écosystème ROS à la \emph{ROSCon Strasbourg 2025}.
-    \item \entrypositionstyle{ANR Rolkneematics} : Développement complet de l'architecture de contrôle et
-      mise en place de la cellule expérimentale. Assure la coordination technique entre les
-      acteurs du projet (conception mécanique, capteurs expérimentaux, modélisation magnétique, IA).
+      -- Projet d'assistance à se lever d'une chaise. Garant des enjeux de sécurité lors des interactions
+      robot-humain. \\
+      -- Mise en place d'un démonstrateur de stabilité dynamique sur \emph{HRP-4} et la nouvelle plateforme
+      \emph{RHPS1}. Valorisation lors de l'évaluation HCERES du laboratoire.
+    \item \entrypositionstyle{Communication} - Présentations techniques à :\\
+      -- \emph{Réseau métier des ingénieurs roboticiens - Tech Days 2RM} - \keyword{Theme}: Reproducibilité
+      logicielle. Excellente réceptivité de la communauté. \\
+      -- \emph{ROSCon Strasbourg 2025}: \keyword{Theme}: contrôle par optimisation quadratique (QP) dans ROS2.
+    \item \entrypositionstyle{Projets}:
+      \begin{itemize}
+        \item \entrypositionstyle{ANR Rolkneematics} : \\
+          -- Mise en place d'un banc d'essai de suivi de trajectoires de genou. \\
+          -- Acquisition d'un dataset de données capteur (partenariat BoneTag) et données de trajectories
+          pour apprentissage IA. \\
+          -- Co-ordination de 2 ingénieurs CDD (mécatronique, IA) et un postdoc (modélisation magnétique).
+      \end{itemize}
     \end{cvitems}
   }
   %---------------------------------------------------------
@@ -60,86 +59,78 @@
   {Nov. 2021 -- Avr. 2023} % Date(s)
   {
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Co-maintenance et développement actif, support
-      technique auprès des équipes du LIRMM.
-    \item \entrypositionstyle{Encadrement technique \& Robotique médicale} : Accompagnement technologique sur
-      des projets de recherche : \\
-      \emph{-- Banc de test pour orthèses} : Développement d'un système robotique complet de suivi de
-      trajectoires bio-médicales d'une articulation de genou (en position et force) pour valider des travaux
-      doctoraux de conception d'orthèses. Intégration de capteurs de mesure (force, pression) et
-      développement des drivers (\keyword{C++}, \emph{communication série, carte d'acquisition}). \\
-      \emph{-- CHU de Montpellier - Projet autisme} : Co-développement d'un système de téléopération du robot
-      \emph{Pepper} pour l'interaction entre médecin et enfant autiste. Réparations critiques sur le robot
-      (dont le remplacement complet d'un bras suite à la casse d'un engrenage interne).
-    \item \entrypositionstyle{Partenariats Industriels (Michelin)} : Responsable de l'intégration robotique
-      pour un projet de déchargement automatisé de cargaisons de pneumatiques. Travail structuré en trois
-      phases : étude de stabilité en simulation (\keyword{MuJoCo, AGX, CoppeliaSim}) et génération de
-      trajectoires complexes (\keyword{MoveIt} et QP avec évitement de collisions) ; intégration à distance avec
-      les ingénieurs de Michelin (algorithmes de vision industrielle, robot Fanuc 7 axes sur base mobile) ;
-      puis déploiement du démonstrateur final sur site industriel. Finalisation du projet de
-      loco-manipulation entammé en 2020 à l'AIST par un démonstrateur sur-site de Michelin Ladoux: adaptation
-      aux contraintes de l'usine.
-    \item \entrypositionstyle{Médiation \& Événementiel scientifique} : Unique responsable technique du robot
-      \keyword{HRP-4} lors d'une démonstration sur scène pour la soirée d'ouverture saisonnière du Centre des
-      Arts d'Enghien-les-Bains. Co-conception avec des artistes et une doctorante en art-info d'une
-      performance de danse live, impliquant : marche dynamique (\keyword{MPC}), retargeting (\keyword{X-Sens, QP}),
-      détection et imitation de
-      mouvements par IA, et coordination fine avec la mise en scène (\keyword{MQTT, TouchDesigner}). Diagnostic
-      et réparations matérielles du
-      robot sur place en autonomie.
+    \item \entrypositionstyle{Développement Logiciel} :
+      \begin{subitems}
+      \item Co-maintenance et développement actif de \keyword{mc\_rtc}, support technique auprès des équipes du LIRMM.
+      \end{subitems}
+    \item \entrypositionstyle{Encadrement} : Accompagnement technologique sur 5 projets doctoraux, dont :
+      \begin{subitems}
+      \item Développement d'un banc d'essai robotique pour tester et valider la conception mécanique d'une orthèse.
+      \item Suivi et déploiement d'un système de téléopération du robot \keyword{Pepper} pour une étude
+        d'interaction avec enfants autistes au \emph{CHU de Montpellier}.
+      \end{subitems}
+    \item \entrypositionstyle{Projets} - Responsable de l'intégration robotique pour :
+      \begin{subitems}
+      \item Deux projets en collaboration avec \keyword{Michelin} avec démonstrateurs finaux validés sur le
+        site de Michelin Ladoux:
+        \begin{subitems}
+        \item Projet de déchargement automatisé de cargaisons de pneumatiques en collaboration avec
+          \keyword{Michelin}. Démonstration sur site approuvée par \keyword{Michelin}.
+        \item Démonstrateur final sur site industriel de \keyword{Michelin Ladoux} d'un projet de
+          loco-manipulation de gros objets industriels (bobine de 110Kg) et d'une nappe de caoutcouc flexible.
+        \end{subitems}
+      \item Une mise-en-scène de danse interactive humain-robot pour la soirée d'ouverture saisonnière 2024
+        du Centre des Arts d'Enghien-les-Bains.
+      \end{subitems}
     \end{cvitems}
   }
 
   %---------------------------------------------------------
   \cventry
-  {AIST-JRL (Joint Robotics Laboratory)} % Organization
+  {AIST -- Joint Robotics Laboratory (JRL)} % Organization
   {Ingénieur de Recherche (CDD)} % Job title
   {Tsukuba, Japon} % Location
   {Nov. 2019 -- Avr. 2021} % Date(s)
   {
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Pilotage stratégique de l'unification du
-      framework de contrôle historique de l'AIST (\emph{HMC}) avec \emph{mc\_rtc} afin de rationaliser les
-      développements et fournir un point d'entrée unique, clair et documenté aux nouveaux chercheurs.
-      Implémentation d'exemples et de démonstrateurs de référence pour assurer le transfert de compétences et
-      valider l'adéquation fonctionnelle du framework.
-    \item \entrypositionstyle{Plateformes \& Intégration} : Intégration complète à ce framework du nouveau
-      robot humanoïde \emph{HRP-5P} et portage d'un démonstrateur clé de vissage industriel (asservissement
-      visuel, contrôle hybride force/position, étalonnage des capteurs). Pérennisation de la brique
-      logicielle d'asservissement visuel sous forme de plugin \emph{C++} réutilisable.
-    \item \entrypositionstyle{Compétitions \& Partenariats Industriels} : \\
-      \emph{-- ANA Avatar X-Prize} : Concepteur principal de l'architecture de contrôle pour les phases de
-      sélections internationales. Mise en œuvre d'un démonstrateur de téléopération complexe intégrant :
-      réalité augmentée (\emph{Unity 3D}, casque de RA HTC Vive et trackers de mouvements, caméras
-      \emph{Realsense}), contrôle robotique temps-réel (retargeting corps complet basé QP, marche stabilisée
-      basée MPC). \\
-      \emph{-- Michelin - loco-manipulation} : Rôle clé d'assistance technique (logicielle et expérimentale)
-      autour de la loco-manipulation de larges objets (bobine industrielle de 110Kg), la manipulation d'une
-      nappe en caoutcouc souple, la localisation (\emph{SLAM}) et l'implémentation de nouveaux algorithmes de
-      suivi d'objets (tracking dense, programmation GPU).
+    \item \entrypositionstyle{Développement Logiciel} : \\
+      -- Pilotage stratégique de l'unification du framework de contrôle historique de l'AIST (\emph{HMC})
+      avec celui du JRL (\emph{mc\_rtc}) afin de rationaliser les développements. \\
+      -- Portage d'un démonstrateur clé de vissage industriel sur \emph{HRP-5P} (asservissement visuel,
+      contrôle hybride force/position, étalonnage des capteurs). \\
+      -- Pérennisation de la brique logicielle d'asservissement visuel.
+    \item \entrypositionstyle{Plateformes} : Intégration du nouveau robot humanoïde \emph{HRP-5P} au
+      framework de contrôle.
+    \item \entrypositionstyle{Projets} : \\
+      -- \emph{ANA Avatar X-Prize (Equipe Janus)} : Concepteur principal de l'architecture de téléopération
+      du robot \emph{HRP-4CR}. Sélectionnés en demi-finale. \\
+      -- \emph{Michelin - loco-manipulation} : Responsable de l'intégration logicielle pour un projet de
+      loco-manipulation d'objets lourds. Démonstrateur au laboratoire validé par \keyword{Michelin}.
     \end{cvitems}
   }
 
   %---------------------------------------------------------
   \cventry
-  {CNRS -- LIRMM (Équipe IDH)} % Organization
+  {CNRS -- LIRMM -- Équipe Interactive Digital Human (IDH)} % Organization
   {Ingénieur de Recherche (CDD)} % Job title
   {Montpellier, France} % Location
   {Oct. 2018 -- Oct. 2019} % Date(s)
   {
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Premières contributions : outils de
+    \item \entrypositionstyle{Développement Logiciel} : Premières contributions au framework
+      \keyword{mc\_rtc}: outils de
       visualisation 3D temps réel et système d'observation d'état.
-    \item \entrypositionstyle{Encadrement \& Appui aux publications} : Mise en place de 3 démonstrateurs
-      physiques sur le robot humanoïde \emph{HRP-4} pour appuyer et valider des publications scientifiques :
-      contrôle des forces de contact en glissement (prédiction, adaptation dynamique du centre de masse) ;
-      nouvelle formulation de contrainte d'évitement de collision et sa validation au contrôle en boucle
-      fermée ; démonstrateur industriel de pick-and-drop logistique incluant l'exploitation de l'impact
+    \item \entrypositionstyle{Encadrement} : Mise en place de 3 démonstrateurs physiques sur le robot
+      humanoïde \emph{HRP-4} pour appuyer et valider des publications scientifiques : \\
+      -- contrôle des forces de contact en glissement (prédiction, adaptation dynamique du centre de masse)\\
+      -- nouvelle formulation de contrainte d'évitement de collision et sa validation au contrôle en boucle fermée \\
+      -- démonstrateur industriel de pick-and-drop logistique incluant l'exploitation de l'impact
       robot-environnement (contraintes QP des forces maximales post-impact admissibles).
-    \item \entrypositionstyle{Projets Européens} : Rôle clé dans le projet Européen H2020 COMANOID avec
-      l'intégration de mes travaux de thèse pour assurer la localisation fiable du robot (SLAM) lors du
-      démonstrateur final du projet sur le site industriel d'Airbus Saint-Nazaire. Travaux d'équipe
-      récompensés par le prix du meilleur article : \emph{IEEE Robotics and Automation Magazine’s 2019 Best
+    \item \entrypositionstyle{Projets} : \\
+      -- Rôle clé dans le projet Européen \keyword{H2020 COMANOID} avec l'intégration de mes travaux de thèse
+      pour assurer la localisation fiable du robot (SLAM) lors du démonstrateur final du projet sur le site
+      industriel d'Airbus Saint-Nazaire. Travaux d'équipe récompensés par le prix du meilleur article :
+      \emph{IEEE Robotics and Automation Magazine’s 2019 Best
       Paper Award}.
     \end{cvitems}
   }

@@ -50,6 +50,12 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
+\newenvironment{subitems}
+{
+\begin{itemize}[label={--}, leftmargin=3ex, topsep=0pt, itemsep=1pt, parsep=0pt]}
+    {
+\end{itemize}}
+
 \input{person}
 \quote{Ingénieur de Recherche spécialisé dans la mise en œuvre et la conduite expérimentale sur robots réels
   (humanoïdes, bras manipulateurs, capteurs tiers). Fort de 12 ans de pratique terrain au sein de laboratoires
