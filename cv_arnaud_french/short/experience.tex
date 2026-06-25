@@ -15,17 +15,17 @@
   {Fév. 2024 -- Aujourd'hui} % Date(s)
   {
     \begin{cvitems} % Description(s) of tasks/responsibilities
-    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Mainteneur principal de cet écosystème
-      robotique suite au départ de \entrypositionstyle{P. Gergondet}, son concepteur historique. L'écosystème
+    \item \entrypositionstyle{Ecosystème Robotique mc\_rtc} : Mainteneur principal suite au départ de
+      \entrypositionstyle{P. Gergondet}, son concepteur historique. L'écosystème
       gravite autour d'un framework central fournissant une architecture modulaire de contrôle temps-réel
-      (C++, Python) basé sur l'optimisation corps complet (QP) et des outils de
+      (\keyword{C++}, \keyword{Python}) basé sur l'optimisation corps complet (\keyword{QP}) et des outils de
       visualisation, de logging et de machines à états finis. Le projet a pris une ampleur
       considérable (dizaines de robots et simulateurs, centaines de controleurs et plugins), dont le maintien
-      repose sur un suivi DevOps crucial que j'assure : intégration continue, infrastructure
-      de compilation, tests unitaires, packaging, déploiement, mise à jour (ex: transition ROS1 vers ROS2).
+      repose sur un suivi \keyword{DevOps} crucial que j'assure : intégration continue, infrastructure
+      de compilation, tests unitaires, packaging, déploiement, mise à jour (ex: transition ROS1 vers \keyword{ROS2}).
     \item \entrypositionstyle{Plateformes Robotiques (Hardware \& Logiciel)} : Responsable technique d'une
-      partie du parc du LIRMM, en particulier de tous les robots humanoïdes (\emph{HRP-4, RHPS1, Unitree G1,
-      Pepper, NAO}) et des bras manipulateurs (\emph{Panda, UR5}). Effectue l'entretien régulier et
+      partie du parc du LIRMM, en particulier de tous les robots humanoïdes (\keyword{HRP-4, RHPS1, Unitree G1,
+      Pepper, NAO}) et des bras manipulateurs (\keyword{Panda, UR5}). Effectue l'entretien régulier et
       l'ingénierie mécanique de précision (démontage, graissage des harmonic drives, remplacement de
       moteurs, re-taraudage, remplacement de câbles électroniques) ainsi que l'intégration de capteurs
       (conception CAO et impression 3D, connexions électriques, intégration logicielle). Assure le maintien
@@ -33,19 +33,19 @@
     \item \entrypositionstyle{Encadrement technique \& Fiabilisation} : Accompagnement de doctorants pour la
       mise en œuvre de démonstrateurs expérimentaux :\\
       \emph{-- Assistance sit-to-stand} : Mise en place et sécurisation de ce démonstrateur à haut risque:
-      contrôle temps-réel de la pression appliquée par le robot \emph{HRP-4} sur le torse d'un humain pour
+      contrôle temps-réel de la pression appliquée par le robot \keyword{HRP-4} sur le torse d'un humain pour
       apporter la force manquante à son mouvement. J'ai sécurisé l'expérimentation par une phase initiale de
       test remplaçant l'humain par un robot Panda afin de valider l'intégration complète (motion tracking
       X-Sens et suivi du mouvement par le robot, qualité de la stabilisation et de l'application des forces). \\
       \emph{-- Évaluation HCERES du laboratoire} : Valorisation de travaux de thèse sur la stabilité
       dynamique corps complet d'un robot humanoïde, que j'ai fortement soutenus par une assistance
       technique à l'implémentation (tâches et contraintes QP) et à la mise en place du démonstrateur. Suite à
-      une défaillance mécanique de \emph{HRP-4}, j'ai effectué son portage au robot \emph{RHPS1} (intégrant
+      une défaillance mécanique de \keyword{HRP-4}, j'ai effectué son portage au robot \keyword{RHPS1} (intégrant
       au passage des capteurs de force).
     \item \entrypositionstyle{Pérennisation \& Valorisation} : Travail actif avec les ingénieurs du
       laboratoire à l'unification des développements logiciels inter-équipes et inter-laboratoires.
       Co-conception avec le LAAS d'une architecture moderne de développement et de déploiement basée sur
-      \emph{Nix}, présentée lors d'événements nationaux (\emph{Tech Days 2RM}) ; présentation de
+      \keyword{Nix}, présentée lors d'événements nationaux (\emph{Tech Days 2RM}) ; présentation de
       l'intégration entre mc\_rtc et l'écosystème ROS à la \emph{ROSCon Strasbourg 2025}.
     \item \entrypositionstyle{ANR Rolkneematics} : Développement complet de l'architecture de contrôle et
       mise en place de la cellule expérimentale. Assure la coordination technique entre les
@@ -67,24 +67,24 @@
       \emph{-- Banc de test pour orthèses} : Développement d'un système robotique complet de suivi de
       trajectoires bio-médicales d'une articulation de genou (en position et force) pour valider des travaux
       doctoraux de conception d'orthèses. Intégration de capteurs de mesure (force, pression) et
-      développement des drivers (\emph{C++, communication série, carte d'acquisition}). \\
+      développement des drivers (\keyword{C++}, \emph{communication série, carte d'acquisition}). \\
       \emph{-- CHU de Montpellier - Projet autisme} : Co-développement d'un système de téléopération du robot
       \emph{Pepper} pour l'interaction entre médecin et enfant autiste. Réparations critiques sur le robot
       (dont le remplacement complet d'un bras suite à la casse d'un engrenage interne).
     \item \entrypositionstyle{Partenariats Industriels (Michelin)} : Responsable de l'intégration robotique
       pour un projet de déchargement automatisé de cargaisons de pneumatiques. Travail structuré en trois
-      phases : étude de stabilité en simulation (\emph{MuJoCo, AGX, CoppeliaSim}) et génération de
-      trajectoires complexes (\emph{MoveIt} et QP avec évitement de collisions) ; intégration à distance avec
+      phases : étude de stabilité en simulation (\keyword{MuJoCo, AGX, CoppeliaSim}) et génération de
+      trajectoires complexes (\keyword{MoveIt} et QP avec évitement de collisions) ; intégration à distance avec
       les ingénieurs de Michelin (algorithmes de vision industrielle, robot Fanuc 7 axes sur base mobile) ;
       puis déploiement du démonstrateur final sur site industriel. Finalisation du projet de
       loco-manipulation entammé en 2020 à l'AIST par un démonstrateur sur-site de Michelin Ladoux: adaptation
       aux contraintes de l'usine.
     \item \entrypositionstyle{Médiation \& Événementiel scientifique} : Unique responsable technique du robot
-      \emph{HRP-4} lors d'une démonstration sur scène pour la soirée d'ouverture saisonnière du Centre des
+      \keyword{HRP-4} lors d'une démonstration sur scène pour la soirée d'ouverture saisonnière du Centre des
       Arts d'Enghien-les-Bains. Co-conception avec des artistes et une doctorante en art-info d'une
-      performance de danse live, impliquant : marche dynamique (\emph{MPC}), retargeting (\emph{X-Sens, QP}),
+      performance de danse live, impliquant : marche dynamique (\keyword{MPC}), retargeting (\keyword{X-Sens, QP}),
       détection et imitation de
-      mouvements par IA, et coordination fine avec la mise en scène (\emph{MQTT, TouchDesigner}). Diagnostic
+      mouvements par IA, et coordination fine avec la mise en scène (\keyword{MQTT, TouchDesigner}). Diagnostic
       et réparations matérielles du
       robot sur place en autonomie.
     \end{cvitems}

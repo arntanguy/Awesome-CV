@@ -18,6 +18,8 @@
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
+% 1. Load csquotes first so biblatex can hook into it
+\usepackage{csquotes}
 \usepackage[french]{babel}
 
 % Configure page margins with geometry
@@ -34,6 +36,11 @@
 % Uncomment if you would like to specify your own color
 % \definecolor{darktext}{HTML}{414141}
 % \definecolor{text}{HTML}{333333}
+
+% % Colors for text
+% % Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{343A40}
+% % \definecolor{text}{HTML}{333333}
 % \definecolor{graytext}{HTML}{5D5D5D}
 % \definecolor{lighttext}{HTML}{999999}
 
@@ -44,6 +51,11 @@
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 \input{person}
+\quote{Ingénieur de Recherche spécialisé dans la mise en œuvre et la conduite expérimentale sur robots réels
+  (humanoïdes, bras manipulateurs, capteurs tiers). Fort de 12 ans de pratique terrain au sein de laboratoires
+  internationaux, j'articule mon expertise en développement C++ autour des défis de l'instrumentation et du
+  maintien en conditions opérationnelles des plateformes. Mon objectif est de faire le pont entre la théorie et
+le matériel, en garantissant des environnements de test robustes, sécurisés et reproductibles pour la recherche.}
 
 %-------------------------------------------------------------------------------
 \begin{document}
