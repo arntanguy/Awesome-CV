@@ -19,11 +19,13 @@
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
 
+% Specify the location of the included fonts
+% \fontdir[../pkgs/fonts/]
+
+\usepackage[french]{babel}
+
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-
-% Specify the location of the included fonts
-\fontdir[fonts/]
 
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
@@ -45,38 +47,12 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
-%-------------------------------------------------------------------------------
-%  PERSONAL INFORMATION
-%  Comment any of the lines below if they are not required
-%-------------------------------------------------------------------------------
-% Available options: circle|rectangle,edge/noedge,left/right
-% \photo{./examples/profile.png}
-\name{Claud D.}{Park}
-\position{Software Architect{\enskip\cdotp\enskip}Security Expert}
-\address{42-8, Bangbae-ro 15-gil, Seocho-gu, Seoul, 00681, Rep. of KOREA}
+% 1. Load biblatex explicitly so LaTeX understands \addbibresource
+\usepackage[style=verbose, backend=biber]{biblatex}
 
-\mobile{(+82) 10-9030-1843}
-\email{posquit0.bj@gmail.com}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
-% \gitlab{gitlab-id}
-% \stackoverflow{SO-id}{SO-name}
-% \twitter{@twit}
-% \skype{skype-id}
-% \reddit{reddit-id}
-% \medium{madium-id}
-% \googlescholar{googlescholar-id}{name-to-display}
-%% \firstname and \lastname will be used
-% \googlescholar{googlescholar-id}{}
-% \extrainfo{extra informations}
+\input{person}
 
-\quote{``Be the change that you want to see in the world."}
-
-%-------------------------------------------------------------------------------
-%  BIBLIOGRAPHY
-%-------------------------------------------------------------------------------
-\addbibresource{cv/references.bib}
+\addbibresource{../citations.bib}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -85,26 +61,28 @@
 % Give optional argument to change alignment(C: center, L: left, R: right)
 \makecvheader
 
+\quote{Ingénieur de Recherche spécialisé dans la mise en œuvre et la conduite expérimentale sur robots réels
+  (humanoïdes, bras manipulateurs, capteurs tiers). Fort de 12 ans de pratique terrain au sein de laboratoires
+  internationaux, j'articule mon expertise en développement C++ autour des défis de l'instrumentation et du
+  maintien en conditions opérationnelles des plateformes. Mon objectif est de faire le pont entre la théorie et
+le matériel, en garantissant des environnements de test robustes, sécurisés et reproductibles pour la recherche.}
+
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
 {\today}
-{Claud D. Park~~~·~~~Curriculum Vitae}
+{Arnaud TANGUY~~~·~~~Curriculum Vitae}
 {\thepage}
 
 %-------------------------------------------------------------------------------
 %  CV/RESUME CONTENT
 %  Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-\input{cv/education.tex}
-\input{cv/skills.tex}
-\input{cv/experience.tex}
-\input{cv/extracurricular.tex}
-\input{cv/honors.tex}
-\input{cv/presentation.tex}
-%\input{cv/writing.tex}
-\input{cv/publications.tex}
-\input{cv/committees.tex}
+\input{detailed/experience.tex}
+\input{detailed/education.tex}
+\input{detailed/skills.tex}
+\input{../publications.tex}
+\input{detailed/extracurricular.tex}
 
 %-------------------------------------------------------------------------------
 \end{document}

@@ -1,0 +1,156 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for Cover Letter
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Authors:
+% Claud D. Park <posquit0.bj@gmail.com>
+% Lars Richter <mail@ayeks.de>
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-----------Aujourd'hui, fort de mon parcours, des compétences acquises tant en matières scientifiques,
+% techniques, qu' humaines (...), je vous propose d'apporter mon soutien à la recherche au sein de l’équipe
+% du département D’INFORMATIQUE, DE ROBOTIQUE ET DE MICROÉLECTRONIQUE du LIRMM à Montpellier et je me porte
+% candidat au poste d'Expert en contrôle - Commande que vous
+% proposez.--------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+\usepackage{hyperref}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\include{cv/person}
+
+%-------------------------------------------------------------------------------
+%  LETTER INFORMATION
+%  All of the below lines must be filled out
+%-------------------------------------------------------------------------------
+% The company being applied to
+\recipient
+{CNRS -- Candidature au poste Expert en contrôle-commande (Concours N° 36)}
+{Affectation: Laboratoire d'Informatique, de Robotique et de Microélectronique de Montpellier, MONTPELLIER}
+% The date on the letter, default is the date of compilation
+\letterdate{\today}
+% The title of the letter
+\lettertitle{}
+% How the letter is opened
+\letteropening{Madame, Monsieur,}
+% How the letter is closed
+\letterclosing{Veuillez agréer, Madame, Monsieur, l'expression de mes salutations respectueuses,}
+% Any enclosures with the letter
+\letterenclosure[Piece-jointe]{Curriculum Vitae, Lettres de recommandation}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[R]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+{\today}
+{Arnaud Tanguy~~~·~~~Lettre de motivation}
+{}
+
+% Print the title with above letter informations
+\makelettertitle
+
+%-------------------------------------------------------------------------------
+%  LETTER CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvletter}
+
+  Passionné d'informatique depuis le collège, mes premiers pas en programmation furent autodidactes. Après
+  une période de découvertes variées explorant la diversité de l'écosystème informatique, c'est par le biais
+  du développement du logiciel \entrypositionstyle{C++} de traitement d'images \entrypositionstyle{Fotowall},
+  durant mes années de collège/lycée, au travers d'une collaboration à distance, que j'ai réellement fait mes
+  premiers pas dans le monde du développement logiciel. Cette collaboration m'a permis d'étendre mes
+  compétences en programmation, et de découvrir les rudiments du développement collaboratif et de ses outils.
+  Tout naturellement mon parcours s'est orienté vers les écoles d'ingénieur informatique. Les deux années de
+  classes préparatoires MPSI m'ont fait entrevoir les possibilités offertes par les mathématiques et la
+  physique, mises en pratique en école d'ingénieur au travers de multiples projets. Les stages de dernière
+  année m'ont introduits aux domaines de la vision et de la commande et planification robotique et donné
+  l'envie d'approfondir leur étude au travers d'une thèse sur le thème du \entrypositionstyle{``SLAM visuel
+  pour la localisation et la commande en boucle fermée de robots humanoïdes"}.
+
+  De par sa nature, à l'intersection des domaines de vision et commande robotique, et son ambition à
+  rapprocher l'état de l'art des deux domaines, cette thèse m'a mis face à d'uniques défis et permis
+  d'explorer en profondeur leurs problématiques scientifiques. Elle m'a d'autre part m'a fait prendre
+  conscience du rôle indispensable de l'ingénierie et de l'intégration continue de logiciels au bon
+  déroulement des travaux de recherche. Il est clair que ceux-ci n'auraient pas pu voir le jour sans
+  construire sur les efforts de mes prédécesseurs à produire une implémentation rigoureuse, performante et
+  flexible de l'état de l'art.
+
+  Ma carrière s'est poursuivie au \entrypositionstyle{CNRS}, avec un poste d'ingénieur contractuel au
+  \entrypositionstyle{LIRMM}, me permettant ainsi de contribuer aux activités de recherche, notamment par la
+  poursuite du développement du framework de contrôle open-source \entrypositionstyle{mc\_rtc}. Celui-ci a
+  pour ambition de fournir une implémentation des algorithmes de pointe en commande de robots, ainsi que les
+  outils essentiels au développement de nouvelles méthodes. Ces travaux ainsi que les efforts de recherche
+  menés au cours des quatre dernières années ont aboutit à la réalisation du démonstrateur final du projet
+  européen \entrypositionstyle{H2020 COMANOID} quant à l'utilisation d'un robot humanoïde de manufacture dans
+  un contexte industriel réel~: une première mondiale~! Cette expérience m'a conduit à mener pour
+  l'\entrypositionstyle{AIST} un projet de fusion entre {\tt mc\_rtc} et leurs méthodes de contrôle, afin de
+  combiner le savoir-faire respectif du CNRS et de l'AIST et d'aboutir à un logiciel de commande unique qui
+  sera enrichi par tous les chercheurs du CNRS, de l'AIST et évidemment d'au-delà. Par exemple, le logiciel
+  est actuellement enrichi par TU/e (Université de Eindhoven), TUM (Université de Munich) et l'EPFL de
+  Lausanne qui apportent respectivement une expertise particulière (TU/e, équipe de Henk Nijmeijer, pour la
+    rigueur des preuves de stabilités sous des tâches d'impacts; à TUM l'équipe de Sami Haddadin pour les
+    observateurs de contacts performants, et à l'EPFL l'équipe de Aude Billard pour planification des tâches
+  par des systèmes dynamiques, réglages des gains par apprentissage, etc.).
+
+  Au cours de mon parcours académique, j'ai eu lieu d'interagir avec de nombreuses plateformes robotiques (au
+  LIRMM, à I3S comme à l'AIST). Par ailleurs, j'ai également eu l'opportunité d'étudier et travailler au sein
+  de multiples universités et laboratoires, en France comme a l'étranger, en interaction avec des collègues
+  d'origine et de cultures variées.
+
+  Aujourd'hui, fort de mon parcours, des compétences acquises tant en matières scientifiques, techniques,
+  qu'humaines, je vous propose d'apporter mon soutien au département robotique du \entrypositionstyle{LIRMM}
+  à Montpellier, dont je connais très bien les divers enjeux scientifiques et autres robots. Je me porte donc
+  candidat au poste d'\entrypositionstyle{expert en contrôle-commande} proposé par le CNRS.
+
+  Je m'engage fortement à apporter une solution intégrée pérenne aux développements logiciels de commande de
+  tous les robots du département robotique et un soutien énergique à la recherche, aux projets européens,
+  nationaux et internationaux ainsi que les projets industriels du département. Je m'engage également à
+  converger vers un framework soutenu par l'ensemble des chercheurs, incluant les problématiques de
+  perception et de contrôle.
+
+\end{cvletter}
+
+%-------------------------------------------------------------------------------
+% Print the signature and enclosures with above letter informations
+\makeletterclosing
+
+\end{document}

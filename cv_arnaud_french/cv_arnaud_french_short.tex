@@ -13,21 +13,17 @@
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 %
 
-
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
-
-% Specify the location of the included fonts
-% \fontdir[../pkgs/fonts/]
-
+% 1. Load csquotes first so biblatex can hook into it
+\usepackage{csquotes}
 \usepackage[french]{babel}
 
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-
 
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
@@ -40,6 +36,11 @@
 % Uncomment if you would like to specify your own color
 % \definecolor{darktext}{HTML}{414141}
 % \definecolor{text}{HTML}{333333}
+
+% % Colors for text
+% % Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{343A40}
+% % \definecolor{text}{HTML}{333333}
 % \definecolor{graytext}{HTML}{5D5D5D}
 % \definecolor{lighttext}{HTML}{999999}
 
@@ -49,11 +50,17 @@
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
+\newenvironment{subitems}
+{
+\begin{itemize}[label={--}, leftmargin=3ex, topsep=0pt, itemsep=1pt, parsep=0pt]}
+    {
+\end{itemize}}
 
-\include{cv/person}
-
-\addbibresource{../citations.bib}
-
+\input{person}
+\quote{Ingénieur de recherche spécialisé en robotique, je combine une expertise en contrôle temps réel C++
+  sur systèmes complexes (notamment humanoïdes) avec la responsabilité du maintien opérationnel des plateformes
+  d'expérimentation. J'assure l'encadrement technique, le support aux utilisateurs, la production des livrables
+scientifiques et l'assistance technique sur des projets d'envergure du laboratoire.}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -65,21 +72,20 @@
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
-  {Arnaud TANGUY~~~·~~~Curriculum Vitae}
-  {\thepage}
-
+{\today}
+{Arnaud TANGUY~~~·~~~Curriculum Vitae}
+{\thepage}
 
 %-------------------------------------------------------------------------------
-%	CV/RESUME CONTENT
-%	Each section is imported separately, open each file in turn to modify content
+%  CV/RESUME CONTENT
+%  Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-\input{cv/experience.tex}
-\input{cv/education.tex}
-\input{../publications.tex}
-\input{cv/extracurricular.tex}
+\input{short/experience.tex}
+\input{short/education.tex}
+\input{short/skills.tex}
+% \input{../publications.tex}
+% \input{short/extracurricular.tex}
 % \input{cv/presentation.tex}
-
 
 %-------------------------------------------------------------------------------
 \end{document}

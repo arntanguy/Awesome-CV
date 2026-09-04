@@ -2,19 +2,64 @@
   description = "LaTeX Document Demo";
 
   inputs = {
-    # Using a more recent nixpkgs is recommended for better LuaLaTeX support
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    # FIXME upgrading breaks awesome-cv formatting
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    tex-fmt.url = "github:wgunderwood/tex-fmt";
+    # tex-fmt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      treefmt-nix,
+      tex-fmt,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        
-        # Combine TeX packages: basic scheme includes fonts and core tools
+
+        # Evaluate treefmt for this system
+        treefmtEval = treefmt-nix.lib.evalModule pkgs {
+          projectRootFile = "flake.nix";
+          settings.global.excludes = [
+            ".envrc"
+            ".git-blame-ignore-revs"
+            ".jrl-ci"
+            "3rd-party/*"
+            "doc/*"
+            "LICENSE"
+          ];
+          # Use the package straight from the tex-fmt input flake!
+          settings.formatter.tex-fmt = {
+            command = "${tex-fmt.packages.${system}.default}/bin/tex-fmt";
+            includes = [
+              "*.tex"
+              "*.bib"
+            ];
+            # Add your custom formatting arguments here
+            # Correct options for tex-fmt
+            options = [
+              "--tabsize"
+              "2"
+              "--wraplen"
+              "120"
+            ];
+          };
+          programs = {
+            mdformat.enable = true;
+            nixfmt.enable = true;
+          };
+        };
+
+        # Combine TeX packages
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) 
+          inherit (pkgs.texlive)
             scheme-basic
             latexmk
             luaotfload
@@ -22,6 +67,7 @@
             ragged2e
             babel
             babel-french
+            hyphen-french
             biblatex
             geometry
             fontspec
@@ -42,62 +88,142 @@
             parskip
             csquotes
             roboto
-            fontawesome
-          ;
+            fontawesome6
+            accsupp
+            ;
+        };
+
+        # CREATE A REPRODUCIBLE FONTCONFIG LINKING SOURCE-SANS
+        fontsConf = pkgs.makeFontsConf {
+          fontDirectories = [
+            pkgs.source-sans
+            pkgs.roboto
+          ];
+        };
+
+        compile-doc = pkgs.writeShellScriptBin "compile-doc" ''
+          if [ -z "$1" ] || [ -z "$2" ]; then
+            echo "Usage: compile-doc <folder> <latexFileName>"
+            echo "Example: compile-doc cv_arnaud_french cv_arnaud_french_detailed"
+            exit 1
+          fi
+
+          FOLDER="$1"
+          FILE_NAME="$2"
+          BUILD_DIR="build"
+
+          export HOME=$(mktemp -d)
+          mkdir -p .cache/texmf-var
+
+          # ENSURE THE COMPILER USES THE HERMETIC FONT CONFIGURATION
+          if [ -z "$FONTCONFIG_FILE" ]; then
+            export FONTCONFIG_FILE="${fontsConf}"
+          fi
+
+          export TEXINPUTS="$(pwd)/pkgs:"
+          export TEXMFHOME=.cache
+          export TEXMFVAR=.cache/texmf-var
+
+          # 1. Jump into the target folder and create the build directory
+          cd "$FOLDER"
+          mkdir -p "$BUILD_DIR"
+
+          # 2. Compile Pass 1 (directing outputs to the build folder)
+          echo "--- Running xelatex (Pass 1) ---"
+          ${tex}/bin/xelatex -interaction=nonstopmode -output-directory="$BUILD_DIR" "$FILE_NAME".tex || true
+
+          # 3. Process bibliography (biber needs to find files inside the build directory)
+          echo "--- Running biber ---"
+          ${pkgs.biber}/bin/biber --output-directory="$BUILD_DIR" "$BUILD_DIR/$FILE_NAME" || true
+
+          # 4. Compile Pass 2
+          echo "--- Running xelatex (Pass 2) ---"
+          ${tex}/bin/xelatex -interaction=nonstopmode -output-directory="$BUILD_DIR" "$FILE_NAME".tex || true
+
+          echo "Done! Generated $FOLDER/$BUILD_DIR/$FILE_NAME.pdf"
+        '';
+
+        mkDocument =
+          { folder, latexFileName }:
+          pkgs.stdenvNoCC.mkDerivation {
+            pname = latexFileName;
+            version = "1.0.0";
+            src = ./.;
+            buildInputs = [
+              pkgs.coreutils
+              tex
+              pkgs.biber
+            ];
+
+            # EXPOSE THE FONT PATH TO THE ISOLATED DERIVATION BUILDER
+            FONTCONFIG_FILE = fontsConf;
+
+            buildPhase = ''
+              ${compile-doc}/bin/compile-doc "${folder}" "${latexFileName}"
+            '';
+
+            installPhase = ''
+              mkdir -p $out/${folder}
+              cp ${folder}/build/${latexFileName}.pdf $out/${folder}/${latexFileName}.pdf
+            '';
+          };
+
+        docs = {
+          french_cv_detailed = mkDocument {
+            folder = "cv_arnaud_french";
+            latexFileName = "cv_arnaud_french_detailed";
+          };
+          french_cv_short = mkDocument {
+            folder = "cv_arnaud_french";
+            latexFileName = "cv_arnaud_french_short";
+          };
+          french_motivation_lirmm_2026 = mkDocument {
+            folder = "cv_arnaud_french";
+            latexFileName = "coverletter_lirmm_2026";
+          };
+          french_coverletter_cnrs_2020 = mkDocument {
+            folder = "cv_arnaud_french";
+            latexFileName = "coverletter_cnrs_concours_2020";
+          };
+          english_cv_outdated = mkDocument {
+            folder = "cv_arnaud_english";
+            latexFileName = "cv_arnaud_english";
+          };
         };
       in
       {
-        packages.document = pkgs.stdenvNoCC.mkDerivation rec {
-          pname = "latex-demo-document";
-          version = "1.0.5";
-          src = ./.;
-          buildInputs = [ pkgs.coreutils tex pkgs.biber ];
-          # needs a writable place to initialize font caches.
-          buildPhase = ''
-            set -e
-            export HOME=$(mktemp -d)
-            mkdir -p .cache/texmf-var
-
-            export TEXINPUTS="`pwd`/pkgs:"
-            export TEXMFHOME=.cache
-            export TEXMFVAR=.cache/texmf-var
-
-            cd cv_arnaud_french
-            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-            biber cv_arnaud_french || true
-            xelatex -interaction=nonstopmode cv_arnaud_french.tex || true
-
-            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-            biber coverletter_lirmm_2026 || true
-            xelatex -interaction=nonstopmode coverletter_lirmm_2026.tex || true
-
-            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
-            biber coverletter_cnrs || true
-            xelatex -interaction=nonstopmode coverletter_cnrs.tex || true
-
-            cd ../cv_arnaud_english
-            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
-            biber cv_arnaud_english || true
-            xelatex -interaction=nonstopmode cv_arnaud_english.tex || true
-
-            cd ..
-          '';
-
-          installPhase = ''
-            mkdir -p $out/french
-            mkdir -p $out/english
-            cp cv_arnaud_french/cv_arnaud_french.pdf $out/french/CV_Arnaud_Tanguy_French.pdf
-            cp cv_arnaud_french/coverletter_lirmm_2026.pdf $out/french/
-            cp cv_arnaud_french/coverletter_cnrs.pdf $out/french/
-            cp cv_arnaud_english/cv_arnaud_english.pdf $out/english/CV_Arnaud_Tanguy_English.pdf
-          '';
+        # Define output packages
+        packages = docs // {
+          all_documents = pkgs.symlinkJoin {
+            name = "all-documents";
+            paths = builtins.attrValues docs;
+          };
+          default = self.packages.${system}.all_documents;
         };
 
-        defaultPackage = self.packages.${system}.document;
+        # Native formatting runner hook (`nix fmt`)
+        formatter = treefmtEval.config.build.wrapper;
 
-        # Optional: Add a devShell so you can run 'nix develop' to test locally
+        # Adds a syntax formatting validation test automatically on `nix flake check`
+        checks = {
+          formatting = treefmtEval.config.build.check self;
+        };
+
+        # Local development environment (`nix develop`)
         devShells.default = pkgs.mkShell {
-          buildInputs = [ tex ];
+          buildInputs = [
+            tex
+            pkgs.biber
+            compile-doc # helper to build the latex documents
+            pkgs.zathura # minimal pdf reader
+          ];
+          shellHook = ''
+            export FONTCONFIG_FILE="${fontsConf}"
+            echo "Build with compile-doc:"
+            ${compile-doc}/bin/compile-doc
+            echo "Display result with: zathura cv_arnaud_french/build/cv_arnaud_french_detailed.pdf"
+          '';
         };
-      });
+      }
+    );
 }
